@@ -1,0 +1,18 @@
+.sidebarContent {
+    @apply flex flex-col relative z-10 px-3 py-7 h-full
+}
+
+.sidebarBody{
+    @apply flex flex-col flex-1 gap-6 mt-6 text-light mb-20
+}
+
+.sidebarLinksGroup{
+    @apply flex items-center gap-4 py-3 px-4 hover:bg-dark rounded-[100px] transition cursor-pointer hover:text-white
+}
+.sidebarSubLinks{
+    @apply transition cursor-pointer hover:text-white
+}
+
+.sidebarFooter{
+    @apply flex flex-col gap-6
+}
