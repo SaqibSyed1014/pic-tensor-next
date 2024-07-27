@@ -3,9 +3,13 @@ import Sidebar from "@/components/sidebar";
 
 export default function DashboardLayout({ children }) {
     return (
-        <div className="flex">
+        <div className="flex h-full  items-stretch">
             <Sidebar></Sidebar>
-            <main className="content-area flex-1 border border-blue-500 ml-[264px]">{children}</main>
+            <main className="content-area flex-1 ml-[264px] flex justify-center items-center h-full w-full">
+                <div className="">
+                    {children}
+                </div>
+            </main>
         </div>
     );
 }

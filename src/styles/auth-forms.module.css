@@ -1,0 +1,24 @@
+.authFormLayout{
+    @apply flex flex-col gap-10 w-[650px] py-24 h-full
+}
+.authFormHeading{
+    @apply text-7xl font-bold text-center
+}
+.authForm{
+    @apply bg-lime-dark rounded-[10px] py-10 px-12 w-full
+}
+.authFormFooterText{
+    @apply text-center pt-10 text-sm
+}
+.authFormInputGroup{
+    @apply flex flex-col gap-1
+}
+.authFormLabel{
+    @apply text-base
+}
+.authFormInput{
+    @apply bg-dark rounded-[800px] py-3 pr-2.5 pl-5 placeholder-light w-full
+}
+.authFormInputAppendIcon{
+    @apply absolute right-0 top-0 bottom-0 flex items-center pr-5 cursor-pointer
+}

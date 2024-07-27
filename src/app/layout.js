@@ -1,7 +1,10 @@
-import { Inter } from "next/font/google";
+import {  Work_Sans } from "next/font/google";
 import "../styles/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const workSans = Work_Sans({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={workSans.className}>{children}</body>
     </html>
   );
 }
