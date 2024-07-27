@@ -7,3 +7,9 @@
 .contentLayout h2{
     @apply text-xl md:text-3xl lg:text-4xl font-bold pb-3 md:pb-5
 }
+.contentLayout{
+    @apply text-[16px] leading-[32px]
+}
+.contentLayout ul{
+    @apply list-disc ml-5
+}

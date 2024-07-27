@@ -58,7 +58,7 @@ export default function Sidebar() {
                 },
                 {
                     label: 'Terms and condition',
-                    link: '/dashboard'
+                    link: '/dashboard/terms-and-conditions'
                 },
                 {
                     label: 'Privacy Policy',

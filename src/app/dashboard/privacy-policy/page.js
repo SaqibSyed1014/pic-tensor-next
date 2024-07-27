@@ -22,7 +22,7 @@ export default function Page() {
                 <h2>How we use your information</h2>
                 <p>
                     We use the information we collect in various ways, including to:
-                    <ul className="list-disc ml-5">
+                    <ul>
                         <li>Provide, operate, and maintain our website</li>
                         <li>Improve, personalize, and expand our website</li>
                         <li>Understand and analyze how you use our website</li>
