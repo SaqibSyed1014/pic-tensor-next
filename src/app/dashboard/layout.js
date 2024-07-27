@@ -1,11 +1,10 @@
 import React from 'react';
+import DashboardLayout from "@/layout/dashboard-layout";
 
-export default function DashboardLayout({ children }) {
+export default function DashboardPagesLayout({ children }) {
     return (
-        <div>
-            <header>Dashboard Header</header>
-            <main>{children}</main>
-            <footer>Dashboard Footer</footer>
-        </div>
+        <DashboardLayout>
+            {children}
+        </DashboardLayout>
     );
 }

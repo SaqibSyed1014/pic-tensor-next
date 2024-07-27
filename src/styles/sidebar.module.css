@@ -10,7 +10,7 @@
     @apply flex items-center gap-4 py-3 px-4 hover:bg-dark rounded-[100px] transition cursor-pointer hover:text-white
 }
 .sidebarSubLinks{
-    @apply transition cursor-pointer hover:text-white
+    @apply transition cursor-pointer hover:text-white pt-5
 }
 
 .sidebarFooter{
