@@ -50,11 +50,10 @@ export default function Sidebar() {
                 <path fillRule="evenodd" clipRule="evenodd" d="M16.1739 13.2717H15.1304C14.8424 13.2717 14.6086 13.5055 14.6086 13.7935C14.6086 14.0815 14.8424 14.3152 15.1304 14.3152H16.1739C16.4619 14.3152 16.6956 14.0815 16.6956 13.7935C16.6956 13.5055 16.4619 13.2717 16.1739 13.2717Z" fill="#C4C4C4"/>
                 <path fillRule="evenodd" clipRule="evenodd" d="M16.1739 19.5327H15.1304C14.8424 19.5327 14.6086 19.7665 14.6086 20.0545C14.6086 20.3425 14.8424 20.5762 15.1304 20.5762H16.1739C16.4619 20.5762 16.6956 20.3425 16.6956 20.0545C16.6956 19.7665 16.4619 19.5327 16.1739 19.5327Z" fill="#C4C4C4"/>
             </svg>,
-            link: '/dashboard',
             subLinks: [
                 {
                     label: 'Company',
-                    link: '/dashboard'
+                    link: '/dashboard/about-us'
                 },
                 {
                     label: 'Terms and condition',

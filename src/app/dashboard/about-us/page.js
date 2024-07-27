@@ -4,7 +4,7 @@ export default function Page() {
     return (
         <div className={styles.contentLayout}>
             <div>
-                <h1>Privacy Policy</h1>
+                <h1>About Us</h1>
                 <h2>Consent</h2>
                 <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
             </div>
