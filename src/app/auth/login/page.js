@@ -36,7 +36,7 @@ export default function Page() {
                                     </svg>
                                 </div>
                             </div>
-                            <p className="text-end text-sm text-primary">Forgot Password?</p>
+                            <Link href="/auth/forgot-password" className="text-end text-sm text-primary">Forgot Password?</Link>
                         </div>
 
                         <BaseButton type="submit" label="Sign In" hasFullWidth={true} classes="mt-4" />

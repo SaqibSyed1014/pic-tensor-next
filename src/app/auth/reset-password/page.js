@@ -7,11 +7,11 @@ import {useRouter} from "next/navigation";
 
 export default function SignUp() {
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: ''
+        newPassword: '',
+        confirmPassword: ''
     });
     const [formValidationStatus, setValidationStatus] = useState(true);
+    const [showNewPassword, setNewPasswordVisibility] = useState(false);
     const [showPassword, setPasswordVisibility] = useState(false);
 
     const router = useRouter()
@@ -45,26 +45,30 @@ export default function SignUp() {
         <>
             <div className={styles.authFormLayout}>
                 <h1 className={styles.authFormHeading}>
-                    Welcome, Let's Create an Account
+                    Reset your Password
                 </h1>
 
                 <div className={styles.authForm}>
                     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                         <div className={styles.authFormInputGroup}>
-                            <label htmlFor="name" className={styles.authFormLabel}>Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Full Name" className={styles.authFormInput} onChange={handleChange} />
-                        </div>
-
-                        <div className={styles.authFormInputGroup}>
-                            <label htmlFor="email" className={styles.authFormLabel}>Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="Your Email Address" className={styles.authFormInput} onChange={handleChange} />
-                            {formData.email && !formData.email.includes('@') && <span className="text-[#FF3A3A]">*Please include @</span>}
-                        </div>
-
-                        <div className={styles.authFormInputGroup}>
-                            <label htmlFor="password" className={styles.authFormLabel}>Password</label>
+                            <label htmlFor="newPassword" className={styles.authFormLabel}>New Password</label>
                             <div className="relative">
-                                <input type={showPassword ? 'text' : 'password'} id="password" name="password" placeholder="Your Password"
+                                <input type={showNewPassword ? 'text' : 'password'} id="newPassword" name="newPassword" placeholder="Enter a Strong Password"
+                                       className={styles.authFormInput} onChange={handleChange}/>
+
+                                <div className={styles.authFormInputAppendIcon}>
+                                    <svg onClick={() => setNewPasswordVisibility(!showNewPassword)} xmlns="http://www.w3.org/2000/svg" width="24" height="17" viewBox="0 0 24 17" fill="none">
+                                        <path d="M23.9011 8.34694C23.8607 8.26913 22.8889 6.42204 20.9597 4.56721C15.6698 -0.518969 8.33752 -0.525835 3.04028 4.56721C1.11108 6.42204 0.139343 8.26913 0.098877 8.34694C-0.032959 8.60062 -0.032959 8.89938 0.098877 9.15306C0.139343 9.23087 1.11108 11.078 3.04028 12.9328C8.33038 18.019 15.6625 18.0258 20.9597 12.9328C22.8889 11.078 23.8607 9.23087 23.9011 9.15306C24.033 8.89938 24.033 8.60062 23.9011 8.34694ZM19.6339 11.658C15.1604 15.959 9.03882 16.1161 4.40643 11.6966C3.18494 10.5313 2.38092 9.34918 2.01086 8.74903C2.37451 8.15787 3.16022 7.00141 4.36615 5.84197C8.82953 1.55064 14.952 1.37512 19.5938 5.80341C20.8154 6.96884 21.6194 8.15135 21.9891 8.75079C21.6255 9.34196 20.8398 10.4986 19.6339 11.658ZM12 4.30331C9.44971 4.30331 7.37494 6.2981 7.37494 8.74991C7.37494 11.2019 9.44971 13.1967 12 13.1967C14.5503 13.1967 16.6251 11.2019 16.6251 8.74991C16.6251 6.2981 14.5503 4.30331 12 4.30331ZM12 11.394C10.4837 11.394 9.24994 10.2078 9.24994 8.74991C9.24994 7.29207 10.4837 6.10604 12 6.10604C13.5163 6.10604 14.7501 7.29207 14.7501 8.74991C14.7501 10.2079 13.5163 11.394 12 11.394Z" fill="#C4C4C4"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className={styles.authFormInputGroup}>
+                            <label htmlFor="confirmPassword" className={styles.authFormLabel}>Password</label>
+                            <div className="relative">
+                                <input type={showPassword ? 'text' : 'password'} id="confirmPassword" name="confirmPassword" placeholder="Enter the same Password"
                                        className={styles.authFormInput} onChange={handleChange}/>
 
                                 <div className={styles.authFormInputAppendIcon}>
@@ -73,9 +77,9 @@ export default function SignUp() {
                                     </svg>
                                 </div>
                             </div>
-                            {formData.password && <div className="flex flex-col gap-2.5 pt-2">
+                            {formData.confirmPassword && <div className="flex flex-col gap-2.5 pt-2">
                                 <div className="flex items-center gap-2">
-                                    {formData.password.length > 8 ?
+                                    {formData.confirmPassword.length > 8 ?
                                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"
                                          fill="none">
                                         <path
@@ -95,7 +99,7 @@ export default function SignUp() {
                                 </div>
 
                                 <div className="flex items-center gap-2">
-                                    { /[A-Z]/.test(formData.password) ? <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                    { /[A-Z]/.test(formData.confirmPassword) ? <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
                                         <path
                                             d="M12.0364 6.21155C12.2805 6.45569 12.2805 6.85144 12.0364 7.09546L7.84351 11.2885C7.59937 11.5325 7.20374 11.5325 6.95959 11.2885L4.96362 9.29236C4.71948 9.04834 4.71948 8.65259 4.96362 8.40857C5.20764 8.16443 5.60339 8.16443 5.84741 8.40857L7.40149 9.96265L11.1525 6.21155C11.3966 5.96753 11.7924 5.96753 12.0364 6.21155ZM16.5 8.75C16.5 13.172 12.9214 16.75 8.5 16.75C4.078 16.75 0.5 13.1714 0.5 8.75C0.5 4.328 4.07861 0.75 8.5 0.75C12.922 0.75 16.5 4.32861 16.5 8.75ZM15.25 8.75C15.25 5.01892 12.2306 2 8.5 2C4.76892 2 1.75 5.01941 1.75 8.75C1.75 12.4811 4.76941 15.5 8.5 15.5C12.2311 15.5 15.25 12.4806 15.25 8.75Z"
                                             fill="#D2FF3A"/>
@@ -108,7 +112,7 @@ export default function SignUp() {
                                 </div>
 
                                 <div className="flex items-center gap-2">
-                                    { /\d/.test(formData.password) ? <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                    { /\d/.test(formData.confirmPassword) ? <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
                                         <path
                                             d="M12.0364 6.21155C12.2805 6.45569 12.2805 6.85144 12.0364 7.09546L7.84351 11.2885C7.59937 11.5325 7.20374 11.5325 6.95959 11.2885L4.96362 9.29236C4.71948 9.04834 4.71948 8.65259 4.96362 8.40857C5.20764 8.16443 5.60339 8.16443 5.84741 8.40857L7.40149 9.96265L11.1525 6.21155C11.3966 5.96753 11.7924 5.96753 12.0364 6.21155ZM16.5 8.75C16.5 13.172 12.9214 16.75 8.5 16.75C4.078 16.75 0.5 13.1714 0.5 8.75C0.5 4.328 4.07861 0.75 8.5 0.75C12.922 0.75 16.5 4.32861 16.5 8.75ZM15.25 8.75C15.25 5.01892 12.2306 2 8.5 2C4.76892 2 1.75 5.01941 1.75 8.75C1.75 12.4811 4.76941 15.5 8.5 15.5C12.2311 15.5 15.25 12.4806 15.25 8.75Z"
                                             fill="#D2FF3A"/>
