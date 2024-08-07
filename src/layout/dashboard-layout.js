@@ -9,9 +9,7 @@ export default function DashboardLayout({ children }) {
             <main className="content-area flex-1 ml-[264px] h-full w-full">
                 <div className="px-6 mb-10 flex flex-col">
                     <TopBar/>
-                    <div className="">
-                        {children}
-                    </div>
+                    {children}
                 </div>
             </main>
         </div>

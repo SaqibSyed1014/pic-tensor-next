@@ -1,26 +1,32 @@
 'use client'
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
-export default function ImageGallery({ generatedImageList }) {
+import {useState} from "react";
+export default function ImageGallery({ generatedImageList, isLoading }) {
     return (
+
         <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 750: 2, 900: 3, 1280: 4}}>
             <Masonry gutter="24px 16px">
                 {generatedImageList.map((image, index) => (
-                    <ImageBox key={index} image={image} />
+                    <ImageBox key={index} image={image} isLoading={isLoading} />
                 ))}
             </Masonry>
         </ResponsiveMasonry>
     )
 }
 
-function ImageBox({ image }) {
+function ImageBox({ image, isLoading }) {
     return (
         <div className="group">
-            <div className="relative rounded-[10px] bg-lime-dark p-1 group-hover:bg-gradient-to-b group-hover:from-primary group-hover:to-white/0 transition">
-                <div className="rounded-[10px] overflow-hidden">
-                    <img src={image.path} alt="" className="w-full h-auto object-cover"/>
+            <div className={`relative rounded-[10px] p-1 ${isLoading ? 'bg-transparent' : 'bg-lime-dark group-hover:bg-gradient-to-b group-hover:from-primary group-hover:to-white/0 transition'}`}>
+                <div className="relative rounded-[10px] overflow-hidden">
+                    <img src={image.path} alt="" className={`w-full h-auto object-cover ${isLoading ? 'opacity-0':''}`}/>
+                    {isLoading &&
+                        <div className="absolute z-10 top-0 left-0 right-0 bottom-0 flex justify-center items-center loader-bg bg-black"></div>
+                    }
                 </div>
 
-                <div className="absolute bottom-0 left-0 top-0 right-0 hidden group-hover:flex items-end bg-gradient-to-b from-white/0 to-black/75">
+                { !isLoading && <div
+                    className="absolute bottom-0 left-0 top-0 right-0 hidden group-hover:flex items-end bg-gradient-to-b from-white/0 to-black/75">
                     <div className="flex gap-3 p-3 pb-5">
                         <div className="shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
@@ -31,23 +37,36 @@ function ImageBox({ image }) {
                             </svg>
                         </div>
                         <p className="text-sm leading-[22px]">{image.title}</p></div>
-                </div>
+                </div>}
             </div>
             <div className="flex justify-end gap-4 pt-[18px] text-light">
-                <div className="cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M6.12512 2.62603L6.56263 1.75101L7.43765 1.3135L6.56263 0.875994L6.12512 0.000976562L5.68761 0.875994L4.81259 1.3135L5.68761 1.75101L6.12512 2.62603ZM2.18754 4.37606L2.91654 2.91779L4.37509 2.18852L2.91654 1.45925L2.18754 0.000976562L1.45854 1.45925L0 2.18852L1.45854 2.91779L2.18754 4.37606ZM11.8127 7.87613L11.0837 9.3344L9.62519 10.0637L11.0837 10.7929L11.8127 12.2512L12.5417 10.7929L14.0003 10.0637L12.5417 9.3344L11.8127 7.87613ZM13.7438 2.57763L11.4236 0.257466C11.253 0.0862907 11.029 0.000976562 10.8051 0.000976562C10.5811 0.000976562 10.3572 0.0862907 10.1863 0.257466L0.256489 10.1873C-0.0853142 10.5291 -0.0853142 11.0831 0.256489 11.4246L2.57665 13.7448C2.74755 13.9157 2.9715 14.001 3.19518 14.001C3.41913 14.001 3.64308 13.9157 3.81398 13.7448L13.7438 3.81468C14.0856 3.47343 14.0856 2.91916 13.7438 2.57763ZM9.8289 5.56445L8.43681 4.17235L10.8048 1.80433L12.1969 3.19643L9.8289 5.56445Z" fill="currentColor"/>
+                <div className="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" className={isLoading ? 'opacity-0' : 'cursor-pointer'}>
+                        <path
+                            d="M6.12512 2.62603L6.56263 1.75101L7.43765 1.3135L6.56263 0.875994L6.12512 0.000976562L5.68761 0.875994L4.81259 1.3135L5.68761 1.75101L6.12512 2.62603ZM2.18754 4.37606L2.91654 2.91779L4.37509 2.18852L2.91654 1.45925L2.18754 0.000976562L1.45854 1.45925L0 2.18852L1.45854 2.91779L2.18754 4.37606ZM11.8127 7.87613L11.0837 9.3344L9.62519 10.0637L11.0837 10.7929L11.8127 12.2512L12.5417 10.7929L14.0003 10.0637L12.5417 9.3344L11.8127 7.87613ZM13.7438 2.57763L11.4236 0.257466C11.253 0.0862907 11.029 0.000976562 10.8051 0.000976562C10.5811 0.000976562 10.3572 0.0862907 10.1863 0.257466L0.256489 10.1873C-0.0853142 10.5291 -0.0853142 11.0831 0.256489 11.4246L2.57665 13.7448C2.74755 13.9157 2.9715 14.001 3.19518 14.001C3.41913 14.001 3.64308 13.9157 3.81398 13.7448L13.7438 3.81468C14.0856 3.47343 14.0856 2.91916 13.7438 2.57763ZM9.8289 5.56445L8.43681 4.17235L10.8048 1.80433L12.1969 3.19643L9.8289 5.56445Z"
+                            fill="currentColor"/>
                     </svg>
+                    {isLoading && <div className="absolute top-0 left-0 right-0 bottom-0 w-4 h-4 bg-loader-gradient rounded-[4px]"></div>}
                 </div>
-                <div className="hover:text-primary transition cursor-pointer">
-                    { image.isFavourite ?
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
-                        <path d="M7.875 14.001C5.59125 13.231 0 9.84473 0 4.37598C0 1.96098 1.96 0.000976562 4.375 0.000976562C5.81 0.000976562 7.07875 0.692227 7.875 1.75098C8.67125 0.683477 9.94875 0.000976562 11.375 0.000976562C13.79 0.000976562 15.75 1.95223 15.75 4.37598C15.75 9.85348 10.1587 13.231 7.875 14.001Z" fill="#D2FF3A"/>
-                    </svg> :
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                        <path d="M8.70508 15.001C6.42133 14.231 0.830078 10.8447 0.830078 5.37598C0.830078 2.96098 2.79008 1.00098 5.20508 1.00098C6.64008 1.00098 7.90883 1.69223 8.70508 2.75098C9.50133 1.68348 10.7788 1.00098 12.2051 1.00098C14.6201 1.00098 16.5801 2.95223 16.5801 5.37598C16.5801 10.8535 10.9888 14.231 8.70508 15.001Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                <div className="relative hover:text-primary transition">
+                    <div className={isLoading ? 'opacity-0' : 'cursor-pointer'}>
+                        {image.isFavourite ?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14"
+                             fill="none">
+                            <path
+                                d="M7.875 14.001C5.59125 13.231 0 9.84473 0 4.37598C0 1.96098 1.96 0.000976562 4.375 0.000976562C5.81 0.000976562 7.07875 0.692227 7.875 1.75098C8.67125 0.683477 9.94875 0.000976562 11.375 0.000976562C13.79 0.000976562 15.75 1.95223 15.75 4.37598C15.75 9.85348 10.1587 13.231 7.875 14.001Z"
+                                fill="#D2FF3A"/>
+                        </svg>
+                        :
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                            <path
+                                d="M8.70508 15.001C6.42133 14.231 0.830078 10.8447 0.830078 5.37598C0.830078 2.96098 2.79008 1.00098 5.20508 1.00098C6.64008 1.00098 7.90883 1.69223 8.70508 2.75098C9.50133 1.68348 10.7788 1.00098 12.2051 1.00098C14.6201 1.00098 16.5801 2.95223 16.5801 5.37598C16.5801 10.8535 10.9888 14.231 8.70508 15.001Z"
+                                stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                     }
+                    </div>
+
+                    {isLoading && <div className="absolute top-0 left-0 right-0 bottom-0 w-4 h-4 bg-loader-gradient rounded-[4px]"></div>}
                 </div>
             </div>
         </div>
