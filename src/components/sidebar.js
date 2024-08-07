@@ -33,7 +33,7 @@ export default function Sidebar() {
                 <path d="M12 8.75V13.75M20.75 14C20.75 18.83 16.83 22.75 12 22.75C7.17 22.75 3.25 18.83 3.25 14C3.25 9.17 7.17 5.25 12 5.25C16.83 5.25 20.75 9.17 20.75 14Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M9 2.75H15" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>,
-            link: '/dashboard'
+            link: '/dashboard/history'
         },
         {
             label: 'About Us',

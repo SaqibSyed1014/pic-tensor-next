@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import ImageGallery from "@/components/image-gallery";
 import { filterOptions, images } from "@/utils/constants";
 
-export default function HistoryPage() {
+export default function HomePage() {
     const [selectedFilter, selectFilter] = useState('new');
     let [filteredImages, setImageList] = useState(images);
 
