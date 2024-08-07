@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from "@/components/sidebar";
 
-export default function DashboardLayout({ children }) {
+export default function AuthLayout({ children }) {
     return (
         <div className="flex h-full items-stretch">
             <Sidebar></Sidebar>

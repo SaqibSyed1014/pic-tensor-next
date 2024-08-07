@@ -1,8 +1,16 @@
+'use client'
 import styles from '@/styles/auth-forms.module.css'
 import BaseButton from "@/components/base-button";
 import Link from "next/link";
+import {useRouter} from "next/navigation";
+
 
 export default function Page() {
+    const router = useRouter()
+    function handleSubmit(e) {
+        e.preventDefault();
+        router.push('/')
+    }
     return (
         <>
             <div className={styles.authFormLayout}>
@@ -11,15 +19,15 @@ export default function Page() {
                 </h1>
 
                 <div className={styles.authForm}>
-                    <form className="flex flex-col gap-6">
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                         <div className={styles.authFormInputGroup}>
                             <label htmlFor="email" className={styles.authFormLabel}>Email Address</label>
-                            <input type="email" id="email" placeholder="Your Email Address" className={styles.authFormInput} />
+                            <input required={true} type="email" id="email" placeholder="Your Email Address" className={styles.authFormInput} />
                         </div>
                         <div className={styles.authFormInputGroup}>
                             <label htmlFor="password" className={styles.authFormLabel}>Password</label>
                             <div className="relative">
-                                <input type="password" id="password" placeholder="Your Password"
+                                <input required={true} type="password" id="password" placeholder="Your Password"
                                       className={styles.authFormInput}/>
 
                                 <div className={styles.authFormInputAppendIcon}>

@@ -7,7 +7,7 @@ export default function DashboardLayout({ children }) {
         <div className="flex h-full items-stretch">
             <Sidebar></Sidebar>
             <main className="content-area flex-1 ml-[264px] h-full w-full">
-                <div className="flex flex-col px-10 pb-10">
+                <div className="px-6 mb-10 flex flex-col">
                     <TopBar/>
                     <div className="">
                         {children}

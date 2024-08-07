@@ -18,6 +18,10 @@ module.exports = {
         light: '#C4C4C4',
         'lime-dark': '#19161C'
       },
+      container: {
+        center: true,
+        padding: '5rem'
+      }
     },
   },
   plugins: [],

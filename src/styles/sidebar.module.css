@@ -9,8 +9,14 @@
 .sidebarLinksGroup{
     @apply flex items-center gap-4 py-3 px-4 hover:bg-dark rounded-[100px] transition cursor-pointer hover:text-white
 }
+.sidebarActiveLinksGroup{
+    @apply bg-dark rounded-[100px] text-white
+}
 .sidebarSubLinks{
     @apply transition cursor-pointer hover:text-white pt-5
+}
+.sidebarActiveSubLinks{
+    @apply text-white before:content-[''] before:w-2.5 before:h-2.5 before:bg-white before:rounded-full before:absolute before:top-1/2 before:left-[-20px] before:transform before:translate-y-1/2;
 }
 
 .sidebarFooter{

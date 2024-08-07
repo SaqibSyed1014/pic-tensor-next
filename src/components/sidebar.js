@@ -3,9 +3,11 @@ import GroupLogo from "@/components/grouop-logo";
 import BaseButton from "@/components/base-button";
 import styles from "@/styles/sidebar.module.css";
 import Link from "next/link";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
+    const route = usePathname();
     const btnIcon = <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
         <path d="M6.62488 3.37505L7.06238 2.50003L7.9374 2.06253L7.06238 1.62502L6.62488 0.75L6.18737 1.62502L5.31235 2.06253L6.18737 2.50003L6.62488 3.37505ZM2.6873 5.12509L3.4163 3.66681L4.87484 2.93754L3.4163 2.20827L2.6873 0.75L1.9583 2.20827L0.499756 2.93754L1.9583 3.66681L2.6873 5.12509ZM12.3125 8.62515L11.5835 10.0834L10.1249 10.8127L11.5835 11.542L12.3125 13.0002L13.0415 11.542L14.5 10.8127L13.0415 10.0834L12.3125 8.62515ZM14.2435 3.32665L11.9234 1.00649C11.7527 0.835314 11.5288 0.75 11.3048 0.75C11.0809 0.75 10.8569 0.835314 10.686 1.00649L0.756245 10.9363C0.414442 11.2781 0.414442 11.8321 0.756245 12.1736L3.07641 14.4938C3.24731 14.6647 3.47126 14.75 3.69494 14.75C3.91889 14.75 4.14283 14.6647 4.31374 14.4938L14.2435 4.56371C14.5853 4.22245 14.5853 3.66818 14.2435 3.32665ZM10.3287 6.31347L8.93656 4.92137L11.3046 2.55336L12.6967 3.94545L10.3287 6.31347Z" fill="black"/>
     </svg>
@@ -53,21 +55,25 @@ export default function Sidebar() {
             subLinks: [
                 {
                     label: 'Company',
-                    link: '/dashboard/about-us'
+                    link: '/dashboard/about/about-us'
                 },
                 {
                     label: 'Terms and condition',
-                    link: '/dashboard/terms-and-conditions'
+                    link: '/dashboard/about/terms-and-conditions'
                 },
                 {
                     label: 'Privacy Policy',
-                    link: '/dashboard/privacy-policy'
+                    link: '/dashboard/about/privacy-policy'
                 }
             ]
         }
     ]
 
     const [subLinkCollapse, toggleCollapse] = useState(false);
+    useEffect(() => {
+        if (route.includes('/about')) toggleCollapse(true);
+    }, [route])
+    console.log(route)
 
     return (
         <aside className="hidden lg:block bg-lime-dark w-[264px] h-svh overflow-auto fixed">
@@ -91,14 +97,14 @@ export default function Sidebar() {
                     <div className="flex flex-col gap-6">
                         {sidebarLinks.map((link, index) => {
                             return !link.subLinks ? (
-                                <Link key={index} className={styles.sidebarLinksGroup} href={link.link}>
+                                <Link key={index} className={`${styles.sidebarLinksGroup} ${route === link.link && styles.sidebarActiveLinksGroup}`} href={link.link}>
                                     <div className="w-6 h-6">{link.icon}</div>
                                     <span>{link.label}</span>
                                 </Link>
                             ) : (
                                 <div key={index}>
                                     <div
-                                        className={styles.sidebarLinksGroup}
+                                        className={`${styles.sidebarLinksGroup} ${subLinkCollapse && styles.sidebarActiveLinksGroup}`}
                                         onClick={() => toggleCollapse(!subLinkCollapse)}
                                     >
                                         <div className="w-6 h-6">{link.icon}</div>
@@ -123,8 +129,8 @@ export default function Sidebar() {
                                     {link.subLinks &&
                                         subLinkCollapse &&
                                         link.subLinks.map((subLink, subIndex) => (
-                                            <div key={subLink.link} className="flex flex-col gap-5 ml-14">
-                                                <Link href={subLink.link} className={styles.sidebarSubLinks}>
+                                            <div key={subLink.link} className="flex flex-col gap-5 ml-14 relative">
+                                                <Link href={subLink.link} className={`${styles.sidebarSubLinks} ${route === subLink.link && styles.sidebarActiveSubLinks}`}>
                                                     <span>{subLink.label}</span>
                                                 </Link>
                                             </div>
@@ -136,14 +142,17 @@ export default function Sidebar() {
                 </div>
 
                 <div className={styles.sidebarFooter}>
-                    <div className={styles.sidebarLinksGroup}>
+                    {!route.includes('/auth') && <Link href="/auth/login" className={styles.sidebarLinksGroup}>
                         <div className="w-6 h-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
-                                <path d="M15 13.75L19 9.75M19 9.75L15 5.75M19 9.75L5 9.75M11 13.75V14.75C11 16.4069 9.65686 17.75 8 17.75H4C2.34315 17.75 1 16.4069 1 14.75V4.75C1 3.09315 2.34315 1.75 4 1.75H8C9.65686 1.75 11 3.09315 11 4.75V5.75" stroke="#C4C4C4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19"
+                                 fill="none">
+                                <path
+                                    d="M15 13.75L19 9.75M19 9.75L15 5.75M19 9.75L5 9.75M11 13.75V14.75C11 16.4069 9.65686 17.75 8 17.75H4C2.34315 17.75 1 16.4069 1 14.75V4.75C1 3.09315 2.34315 1.75 4 1.75H8C9.65686 1.75 11 3.09315 11 4.75V5.75"
+                                    stroke="#C4C4C4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         </div>
                         <span>Logout</span>
-                    </div>
+                    </Link>}
                     <div className="px-3">
 
                     </div>

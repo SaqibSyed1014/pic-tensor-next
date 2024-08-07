@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styles from '@/styles/auth-forms.module.css'
 import BaseButton from "@/components/base-button";
 import Link from "next/link";
+import {useRouter} from "next/navigation";
 
 export default function SignUp() {
     const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ export default function SignUp() {
     });
     const [formValidationStatus, setValidationStatus] = useState(true);
     const [showPassword, setPasswordVisibility] = useState(true);
+
+    const router = useRouter()
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,7 +38,7 @@ export default function SignUp() {
     const handleSubmit = (e) => {
         if (formValidationStatus) return;
         e.preventDefault();
-        console.log(formData);
+        router.push('/auth/login');
     };
 
     return (

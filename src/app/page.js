@@ -1,6 +1,7 @@
-import { redirect } from 'next/navigation';
-
 export default function HomePage() {
-  redirect('/auth/login');
-  return null; // Or a loading spinner while redirecting
+  return (
+      <>
+        <h1>8uru</h1>
+      </>
+  );
 }
