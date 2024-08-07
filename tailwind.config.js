@@ -16,6 +16,7 @@ module.exports = {
         primary: '#D2FF3A',
         dark: '#0A0A0A',
         light: '#C4C4C4',
+        blue: '#6843EC',
         'lime-dark': '#19161C'
       },
       container: {

@@ -18,7 +18,7 @@ export default function Sidebar() {
             icon: <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                 <path d="M11 16.7363V13.7363M8.02 1.58626L2.63 5.78626C1.73 6.48626 1 7.97626 1 9.10626V16.5163C1 18.8363 2.89 20.7363 5.21 20.7363H16.79C19.11 20.7363 21 18.8363 21 16.5263V9.24626C21 8.03626 20.19 6.48626 19.2 5.79626L13.02 1.46626C11.62 0.486256 9.37 0.536256 8.02 1.58626Z" stroke="#C4C4C4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>,
-            link: '/dashboard'
+            link: '/dashboard/home'
         },
         {
             label: 'Generate',
