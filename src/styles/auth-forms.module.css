@@ -25,3 +25,19 @@
 
 
 /* Verify Email View */
+
+
+
+/*Auth Code*/
+.codeDigitInput{
+    @apply bg-dark rounded-[10px] py-4 px-5 w-14 h-14 text-center font-bold text-2xl
+}
+.codeDigitInput::-webkit-inner-spin-button,
+.codeDigitInput::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.codeDigitInput {
+    -moz-appearance: textfield;
+
+}

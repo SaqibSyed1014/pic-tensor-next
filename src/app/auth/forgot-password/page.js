@@ -9,7 +9,7 @@ export default function Page() {
     const router = useRouter()
     function handleSubmit(e) {
         e.preventDefault();
-        router.push('/home')
+        router.push('/auth/auth-code');
     }
     return (
         <>
