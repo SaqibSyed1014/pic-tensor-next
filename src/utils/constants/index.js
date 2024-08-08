@@ -97,3 +97,19 @@ export const filterOptions = [
     { label: 'Best', value: 'best' },
     { label: 'Favourite', value: 'favourite' },
 ]
+
+
+export const generatedAvatars = [
+    '/images/ai-generated/people/person-1.png',
+    '/images/ai-generated/people/person-2.png',
+    '/images/ai-generated/people/person-3.png',
+    '/images/ai-generated/people/person-4.png',
+    '/images/ai-generated/people/person-5.png',
+    '/images/ai-generated/people/person-6.png',
+    '/images/ai-generated/people/person-7.png',
+    '/images/ai-generated/people/person-8.png',
+    '/images/ai-generated/people/person-9.png',
+    '/images/ai-generated/people/person-10.png',
+    '/images/ai-generated/people/person-11.png',
+    '/images/ai-generated/people/person-12.png',
+]

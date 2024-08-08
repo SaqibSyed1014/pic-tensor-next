@@ -38,7 +38,7 @@ export default function SignUp() {
     const handleSubmit = (e) => {
         if (formValidationStatus) return;
         e.preventDefault();
-        router.push('/auth/login');
+        router.push('/auth/verify-email');
     };
 
     return (
