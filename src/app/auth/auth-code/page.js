@@ -55,10 +55,7 @@ export default function AuthCodePage() {
                                 </div>
                             </div>
 
-
-
-                            <p>For security reasons, we do not store your password. So we have sent you an
-                                autenhtication code to verify.</p>
+                            <p>For security reasons, we do not store your password. So we have sent you an authentication code to verify.</p>
                         </div>
                         <div className="lg:py-10">
                             <BaseButton label="Reset Password" hasFullWidth={true}/>

@@ -24,9 +24,9 @@ export default function Page() {
                             <label htmlFor="email" className={styles.authFormLabel}>Email</label>
                             <input required={true} type="email" id="email" placeholder="Your Email" className={styles.authFormInput} />
                         </div>
-                        <div className="flex items-stretch gap-3 h-full text-light">
+                        <div className="flex max-md:flex-col items-stretch gap-3 h-full text-light">
                             <p>Enter the email address you used when you joined and we’ll send you instructions to reset your password.</p>
-                            <hr className="block h-[100px] border border-light/20"/>
+                            <hr className="block md:h-[100px] border border-light/20"/>
                             <p>For security reasons, we do not store your password. So we will send you an autenhtication code to verify.</p>
                         </div>
 
