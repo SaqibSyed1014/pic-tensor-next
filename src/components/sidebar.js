@@ -165,15 +165,15 @@ export default function SidebarWrapper({ sidebarVisibility, toggleAction }) {
     return (
         <>
             <div className="hidden lg:block fixed">
-                <Sidebar/>
+                <Sidebar />
             </div>
             {sidebarVisibility}
-            <div className={`block lg:hidden fixed top-0 left-0 transition ${sidebarVisibility ? 'translate-x-0' : '-translate-x-full'}`}>
+            <div className={`block lg:hidden fixed z-20 top-0 left-0 transition ${sidebarVisibility ? 'translate-x-0' : '-translate-x-full'}`}>
                 <div className="flex gap-4">
-                    <Sidebar/>
+                    <Sidebar />
                     <div className="bg-light size-12 rounded-[8px] flex justify-center items-center mt-4" onClick={toggleAction}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                            <path d="M11 1L1 11M1 1L11 11" stroke="#0A0A0A" strokeWidth="1.66667" strokeLinecap="round" stroke-linejoin="round"/>
+                            <path d="M11 1L1 11M1 1L11 11" stroke="#0A0A0A" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
                 </div>
