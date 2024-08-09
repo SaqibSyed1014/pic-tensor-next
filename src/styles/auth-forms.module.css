@@ -1,5 +1,5 @@
 .authFormLayout{
-    @apply flex flex-col gap-5 md:gap-10 w-[670px] py-24 h-full
+    @apply flex flex-col justify-center gap-5 md:gap-10 w-[670px] py-24 h-full
 }
 .authFormHeading{
     @apply text-5xl md:text-6xl lg:text-7xl font-bold text-center text-wrap

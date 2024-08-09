@@ -5,7 +5,7 @@ import BaseLayout from "@/layout/base-layout";
 export default function AuthLayout({ children }) {
     return (
         <BaseLayout hasTopBar={false}>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center h-full">
                 {children}
             </div>
         </BaseLayout>

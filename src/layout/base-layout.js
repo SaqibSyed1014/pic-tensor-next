@@ -23,7 +23,7 @@ export default function BaseLayout({ children, hasTopBar }) {
 
             <main className="content-area flex-1 ml-0 lg:!ml-[264px] h-full w-full">
                 <MobileNavigationBar toggleAction={() => toggleSidebarAction(true)} />
-                <div className="container">
+                <div className="container h-full">
                     {hasTopBar && <TopBar />}
                     {children}
                 </div>
