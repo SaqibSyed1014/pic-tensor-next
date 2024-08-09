@@ -8,9 +8,9 @@ export const images = [
     },
     {
         title: 'A close-up of a colorful butterfly with its wings spread wide.',
-        path: '/images/ai-generated/image-2.png',
+        path: '/images/ai-generated/image-1.png',
         isFavourite: false,
-        isNew: false,
+        isNew: true,
         isBest: true
     },
     {
@@ -29,7 +29,7 @@ export const images = [
     },
     {
         title: 'Cybernetic tools, robots, software, networks, biopunk colourful design,',
-        path: '/images/ai-generated/image-5.png',
+        path: '/images/ai-generated/image-3.png',
         isFavourite: true,
         isNew: false,
         isBest: true

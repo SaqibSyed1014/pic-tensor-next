@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={workSans.className}>{children}</body>
+      <body className={workSans.className} suppressHydrationWarning={true}>{children}</body>
     </html>
   );
 }

@@ -1,3 +1,4 @@
+'use client'
 import BaseButton from "@/components/base-button";
 import UserProfile from "@/components/UserProfile";
 
@@ -12,9 +13,10 @@ export default function TopBar() {
                     </div>
                 </div>
 
-                <UserProfile />
+                <div className="max-lg:hidden">
+                    <UserProfile/>
+                </div>
             </div>
-
         </section>
     )
 }

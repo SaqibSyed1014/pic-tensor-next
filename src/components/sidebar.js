@@ -6,7 +6,7 @@ import Link from "next/link";
 import {useEffect, useState} from "react";
 import { usePathname } from "next/navigation";
 
-export default function Sidebar() {
+function Sidebar() {
     const route = usePathname();
     const btnIcon = <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
         <path d="M6.62488 3.37505L7.06238 2.50003L7.9374 2.06253L7.06238 1.62502L6.62488 0.75L6.18737 1.62502L5.31235 2.06253L6.18737 2.50003L6.62488 3.37505ZM2.6873 5.12509L3.4163 3.66681L4.87484 2.93754L3.4163 2.20827L2.6873 0.75L1.9583 2.20827L0.499756 2.93754L1.9583 3.66681L2.6873 5.12509ZM12.3125 8.62515L11.5835 10.0834L10.1249 10.8127L11.5835 11.542L12.3125 13.0002L13.0415 11.542L14.5 10.8127L13.0415 10.0834L12.3125 8.62515ZM14.2435 3.32665L11.9234 1.00649C11.7527 0.835314 11.5288 0.75 11.3048 0.75C11.0809 0.75 10.8569 0.835314 10.686 1.00649L0.756245 10.9363C0.414442 11.2781 0.414442 11.8321 0.756245 12.1736L3.07641 14.4938C3.24731 14.6647 3.47126 14.75 3.69494 14.75C3.91889 14.75 4.14283 14.6647 4.31374 14.4938L14.2435 4.56371C14.5853 4.22245 14.5853 3.66818 14.2435 3.32665ZM10.3287 6.31347L8.93656 4.92137L11.3046 2.55336L12.6967 3.94545L10.3287 6.31347Z" fill="black"/>
@@ -73,10 +73,9 @@ export default function Sidebar() {
     useEffect(() => {
         if (route.includes('/about')) toggleCollapse(true);
     }, [route])
-    console.log(route)
 
     return (
-        <aside className="hidden lg:block bg-lime-dark w-[264px] h-svh overflow-auto fixed">
+        <aside className="w-[264px] bg-lime-dark h-svh overflow-auto">
             <div className="absolute z-[0] -top-[500px] -left-[450px] size-[620px] blur-3xl bg-[#6843EC] rounded-full"></div>
 
             <div className={styles.sidebarContent}>
@@ -159,5 +158,26 @@ export default function Sidebar() {
                 </div>
             </div>
         </aside>
+    )
+}
+
+export default function SidebarWrapper({ sidebarVisibility, toggleAction }) {
+    return (
+        <>
+            <div className="hidden lg:block fixed">
+                <Sidebar/>
+            </div>
+            {sidebarVisibility}
+            <div className={`block lg:hidden fixed top-0 left-0 transition ${sidebarVisibility ? 'translate-x-0' : '-translate-x-full'}`}>
+                <div className="flex gap-4">
+                    <Sidebar/>
+                    <div className="bg-light size-12 rounded-[8px] flex justify-center items-center mt-4" onClick={toggleAction}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <path d="M11 1L1 11M1 1L11 11" stroke="#0A0A0A" strokeWidth="1.66667" strokeLinecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
