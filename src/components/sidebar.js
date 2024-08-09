@@ -16,8 +16,8 @@ function Sidebar() {
     }, [route])
 
     return (
-        <aside className="w-[264px] bg-lime-dark h-svh overflow-auto">
-            <div className="absolute z-[0] -top-[500px] -left-[450px] size-[620px] blur-3xl bg-[#6843EC] rounded-full"></div>
+        <aside className={styles.sidebarWrapper}>
+            <div className={styles.sidebarBgGradient} />
 
             <div className={styles.sidebarContent}>
                 <div className="sidebar-header">
@@ -105,7 +105,7 @@ function Sidebar() {
 export default function SidebarWrapper({ sidebarVisibility, toggleAction }) {
     return (
         <>
-            <div className="hidden lg:block fixed">
+            <div className="hidden lg:block fixed overflow-hidden">
                 <Sidebar />
             </div>
             {sidebarVisibility}

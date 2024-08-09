@@ -1,3 +1,15 @@
+.sidebarWrapper{
+    @apply w-[264px] bg-lime-dark h-svh overflow-y-auto overflow-x-hidden relative z-10
+}
+.sidebarWrapper::-webkit-scrollbar {
+    @apply w-[9px]
+}
+.sidebarWrapper::-webkit-scrollbar-thumb {
+    @apply bg-dark rounded-[10px]
+}
+.sidebarBgGradient{
+    @apply absolute z-[0] -top-[500px] -left-[450px] size-[720px] blur-3xl bg-[#6843EC]/60 rounded-full
+}
 .sidebarContent {
     @apply flex flex-col relative z-10 px-3 py-7 h-full
 }
