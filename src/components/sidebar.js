@@ -10,7 +10,9 @@ import {sidebarLinks, btnIcon} from "@/utils/constants";
 function Sidebar() {
     const route = usePathname();
 
+    const [isDarkMode, setDarkMode] = useState(true);
     const [subLinkCollapse, toggleCollapse] = useState(false);
+
     useEffect(() => {
         if (route.includes('/about')) toggleCollapse(true);
     }, [route])
@@ -94,7 +96,35 @@ function Sidebar() {
                         <span>Logout</span>
                     </Link>}
                     <div className="px-3">
-
+                        <div className="relative border border-dark rounded-xl text-lg font-bold">
+                            <div className={`absolute bg-dark top-0 bottom-0 w-1/2 rounded-xl transition-all duration-300 ${isDarkMode ? 'translate-x-0' : 'translate-x-full'}`} />
+                            <div className="flex relative z-[2]">
+                                <div onClick={() => setDarkMode(true)} className={`flex gap-2 justify-center items-center py-3 px-4 cursor-pointer ${isDarkMode ? 'text-white' : 'text-light opacity-50'}`}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="22" viewBox="0 0 21 22"
+                                         fill="none">
+                                        <path
+                                            d="M1.03009 11.17C1.39009 16.32 5.76009 20.51 10.9901 20.74C14.6801 20.9 17.9801 19.18 19.9601 16.47C20.7801 15.36 20.3401 14.62 18.9701 14.87C18.3001 14.99 17.6101 15.04 16.8901 15.01C12.0001 14.81 8.00009 10.72 7.98009 5.88996C7.97009 4.58996 8.24009 3.35996 8.73009 2.23996C9.27009 0.999961 8.62009 0.409961 7.37009 0.939961C3.41009 2.60996 0.70009 6.59996 1.03009 11.17Z"
+                                            stroke="white" strokeWidth="1.25" strokeLinecap="round"
+                                            strokeLinejoin="round"/>
+                                    </svg>
+                                    <span>Dark</span>
+                                </div>
+                                <div onClick={() => setDarkMode(false)} className={`flex gap-2 justify-center items-center py-3 px-4 cursor-pointer ${!isDarkMode ? 'text-white' : 'text-light opacity-50'}`}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
+                                         fill="none">
+                                        <path
+                                            d="M12 19.25C13.7239 19.25 15.3772 18.5652 16.5962 17.3462C17.8152 16.1272 18.5 14.4739 18.5 12.75C18.5 11.0261 17.8152 9.37279 16.5962 8.15381C15.3772 6.93482 13.7239 6.25 12 6.25C10.2761 6.25 8.62279 6.93482 7.40381 8.15381C6.18482 9.37279 5.5 11.0261 5.5 12.75C5.5 14.4739 6.18482 16.1272 7.40381 17.3462C8.62279 18.5652 10.2761 19.25 12 19.25Z"
+                                            stroke="#C4C4C4" strokeWidth="1.25" strokeLinecap="round"
+                                            strokeLinejoin="round"/>
+                                        <path
+                                            d="M19.14 19.89L19.01 19.76M19.01 5.74L19.14 5.61M4.86 19.89L4.99 19.76M12 2.83V2.75M12 22.75V22.67M2.08 12.75H2M22 12.75H21.92M4.99 5.74L4.86 5.61"
+                                            stroke="#C4C4C4" strokeWidth="1.66667" strokeLinecap="round"
+                                            strokeLinejoin="round"/>
+                                    </svg>
+                                    <span>Light</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 .sidebarWrapper{
-    @apply w-[264px] bg-lime-dark h-svh overflow-y-auto overflow-x-hidden relative z-10
+    @apply w-[270px] bg-lime-dark h-svh overflow-y-auto overflow-x-hidden relative z-10
 }
 .sidebarWrapper::-webkit-scrollbar {
     @apply w-[9px]
