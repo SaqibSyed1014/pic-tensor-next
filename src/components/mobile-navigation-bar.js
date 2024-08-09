@@ -1,5 +1,5 @@
 'use client'
-import GroupLogo from "@/components/grouop-logo";
+import GroupLogo from "@/components/group-logo";
 
 export default function MobileNavigationBar({ toggleAction }) {
     return (

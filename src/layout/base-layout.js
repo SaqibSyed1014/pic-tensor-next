@@ -1,14 +1,19 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import SidebarWrapper from "@/components/sidebar";
 import MobileNavigationBar from "@/components/mobile-navigation-bar";
 import TopBar from "@/components/top-bar";
+import {usePathname} from "next/navigation";
 
 export default function BaseLayout({ children, hasTopBar }) {
+    const route = usePathname();
+
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     function toggleSidebarAction(showSidebar) {
         setIsSidebarOpen(showSidebar);
     }
+
+    useEffect(() => setIsSidebarOpen(false), [route])
     return (
         <div className="flex h-screen items-stretch">
             <SidebarWrapper

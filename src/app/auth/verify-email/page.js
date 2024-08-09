@@ -1,7 +1,7 @@
 import styles from "@/styles/auth-forms.module.css";
 import {generatedAvatars} from "@/utils/constants";
 import BaseButton from "@/components/base-button";
-import ImageBgHoverEffect from "@/components/ImageBgHoverEffect";
+import ImageBgHoverEffect from "@/components/image-bg-hover-effect";
 import Link from "next/link";
 
 export default function VerifyEmailPage() {
